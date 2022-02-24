@@ -3,3 +3,7 @@
 //
 
 #include "matrix.h"
+
+   matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo) {
+
+}

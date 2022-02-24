@@ -8,6 +8,15 @@
 
 class matrix {
 
+   unsigned n, m, modulo;
+   unsigned* data;
+
+public:
+
+   matrix(unsigned n, unsigned m, unsigned modulo);
+
+
+
 };
 
 
