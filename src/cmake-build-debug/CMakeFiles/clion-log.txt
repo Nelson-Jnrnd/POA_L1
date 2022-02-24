@@ -1,0 +1,4 @@
+"P:\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" D:\prog\heigVD_2021\POA\POA_L1\src
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/prog/heigVD_2021/POA/POA_L1/src/cmake-build-debug

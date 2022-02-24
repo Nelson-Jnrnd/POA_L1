@@ -1,0 +1,3 @@
+"P:\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\POA_L1.dir/objects.a
+P:\MinGW\bin\ar.exe cr CMakeFiles\POA_L1.dir/objects.a @CMakeFiles\POA_L1.dir\objects1.rsp
+P:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\POA_L1.dir/objects.a -Wl,--no-whole-archive  -o POA_L1.exe -Wl,--out-implib,libPOA_L1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\POA_L1.dir\linklibs.rsp
