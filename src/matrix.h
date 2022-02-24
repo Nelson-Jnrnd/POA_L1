@@ -7,15 +7,16 @@
 
 
 class matrix {
-
-   unsigned n, m, modulo;
-   unsigned* data;
-
 public:
 
    matrix(unsigned n, unsigned m, unsigned modulo);
 
 
+private:
+    unsigned n, m, modulo;
+    unsigned** data;
+
+    void fillWithRandomData();
 
 };
 
