@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/prog/heigVD_2021/POA/POA_L1/src/matrix.cpp
+matrix.h
+D:/prog/heigVD_2021/POA/POA_L1/src/matrix.h
+cstdlib
+-
+iostream
+D:/prog/heigVD_2021/POA/POA_L1/src/iostream
+
+D:/prog/heigVD_2021/POA/POA_L1/src/matrix.h
+

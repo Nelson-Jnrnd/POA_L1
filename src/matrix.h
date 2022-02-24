@@ -18,6 +18,7 @@ private:
 
     void fillWithRandomData();
 
+    void print();
 };
 
 
