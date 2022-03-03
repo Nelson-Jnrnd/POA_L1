@@ -10,7 +10,9 @@ using std::endl;
 int main() {
     cout << "project is working" << endl;
 
-    matrix* m = new matrix(5, 5, 3);
+    matrix* m = new matrix(3, 5, 10);
 
+
+    cout << "test operator : " << endl << m;
     delete m;
 }
