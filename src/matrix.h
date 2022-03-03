@@ -16,7 +16,9 @@ public:
 
     matrix(unsigned n, unsigned m, unsigned modulo);
 
+    matrix(const matrix& other);
 
+    virtual ~matrix();
 private:
     unsigned n, m, modulo;
     unsigned** data;

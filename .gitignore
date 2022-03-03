@@ -33,3 +33,4 @@
 
 # Clion
 .idea
+src/cmake-build-debug
