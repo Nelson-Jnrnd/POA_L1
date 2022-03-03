@@ -6,6 +6,13 @@
 #include <cstdlib>
 #include "iostream"
 
+matrix::matrix() {
+   this->n = 0;
+   this->m = 0;
+   this->modulo = 0;
+   this->data = nullptr;
+}
+
 matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo) {
     this->n = n;
     this->m = m;
@@ -35,3 +42,51 @@ void matrix::print(){
         }
     }
 }
+
+matrix matrix::operator+(const matrix& a) {
+   auto* result = new matrix(a.n, a.m, a.modulo);
+   for(unsigned i = 0; i < result->n; ++i){
+      for (unsigned j = 0; j < result->m; ++j) {
+         result->data[i][j] = (this->data[i][j] + a.data[i][j]) % result->modulo;
+      }
+   }
+   return *(result);
+}
+
+matrix matrix::operator-(const matrix& a) {
+   if (this->modulo != a.modulo)
+      throw std::invalid_argument("Les deux matrices n'ont pas le même modulo");
+   matrix* result = new matrix(a.n, a.m, a.modulo);
+   for(unsigned i = 0; i < result->n; ++i){
+      for (unsigned j = 0; j < result->m; ++j) {
+         result->data[i][j] = (this->data[i][j] - a.data[i][j]) % result->modulo;
+      }
+   }
+   return *(result);
+}
+
+matrix matrix::operator+=(matrix &a) {
+   *this = *this + a;
+   return *this;
+}
+
+matrix matrix::operator-=(matrix &a) {
+   *this = *this - a;
+   return *this;
+}
+
+matrix matrix::checkMatrixes(const matrix &a, const matrix &b) {
+   unsigned newN = std::max(a.n, b.n);
+   unsigned newM = std::max(a.m, b.m);
+   unsigned newMod = std::max(a.modulo, b.modulo);
+
+
+}
+
+
+
+
+
+
+
+

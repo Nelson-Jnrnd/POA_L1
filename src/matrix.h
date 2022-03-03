@@ -9,16 +9,22 @@
 class matrix {
 public:
 
+   matrix();
    matrix(unsigned n, unsigned m, unsigned modulo);
+   matrix operator+(const matrix& a);
+   matrix operator-(const matrix& a);
 
+   matrix operator+=(matrix& a);
+   matrix operator-=(matrix& a);
 
 private:
-    unsigned n, m, modulo;
-    unsigned** data;
+    unsigned n{}, m{}, modulo{};
+    unsigned** data{};
 
     void fillWithRandomData();
-
+    matrix checkMatrixes(const matrix& a, const matrix& b);
     void print();
+
 };
 
 

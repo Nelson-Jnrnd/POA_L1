@@ -11,6 +11,12 @@ int main() {
     cout << "project is working" << endl;
 
     matrix* m = new matrix(5, 5, 3);
+    matrix* n = new matrix(5,5,3);
+
+    matrix p;
+
+    p = m + n;
 
     delete m;
+    delete n;
 }
