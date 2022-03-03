@@ -12,11 +12,17 @@ int main() {
 
     matrix* m = new matrix(30, 10, 10);
 
+    matrix* p = new matrix(30, 10, 10);
 
     cout << "test operator : " << endl << m;
 
     matrix c(*m);
 
     cout << "test constructor copy : " << endl << c;
+
+    *m = *p;
+
+    cout << "test = operator copy : " << endl << m;
     delete m;
+    delete p;
 }

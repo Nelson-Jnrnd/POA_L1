@@ -18,6 +18,9 @@ public:
 
     matrix(const matrix& other);
 
+    matrix& operator= (const matrix& other);
+    matrix& operator= (const matrix* other);
+
     virtual ~matrix();
 private:
     unsigned n, m, modulo;
