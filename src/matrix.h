@@ -23,10 +23,9 @@ public:
 
     virtual ~matrix();
 private:
+    matrix(unsigned n, unsigned m, unsigned modulo, bool initRandom);
     unsigned n, m, modulo;
     unsigned** data;
-
-    void fillWithRandomData();
 };
 
 

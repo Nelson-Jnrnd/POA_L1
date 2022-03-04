@@ -20,9 +20,16 @@ int main() {
 
     cout << "test constructor copy : " << endl << c;
 
+
+    cout << "m : " << endl << m;
+    cout << "p : " << endl << p;
     *m = *p;
 
     cout << "test = operator copy : " << endl << m;
+
+
+    cout << "m : " << endl << m;
+    cout << "p : " << endl << p;
     delete m;
     delete p;
 }

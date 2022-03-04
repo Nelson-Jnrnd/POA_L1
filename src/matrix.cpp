@@ -6,7 +6,8 @@
 #include <cstdlib>
 #include "iostream"
 
-matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo) {
+
+matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
     this->n = n;
     this->m = m;
     this->modulo = modulo;
@@ -15,17 +16,35 @@ matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo) {
     for (int i = 0; i < m; ++i) {
         this->data[i] = new unsigned [n];
     }
-    fillWithRandomData();
-}
-
-void matrix::fillWithRandomData() {
-    for (int i = 0; i < this->m; ++i) {
-        for (int j = 0; j < this->n; ++j) {
-            this->data[i][j] = rand() % this->modulo;
+    if(initRandom) {
+        for (int i = 0; i < this->m; ++i) {
+            for (int j = 0; j < this->n; ++j) {
+                this->data[i][j] = rand() % this->modulo;
+            }
         }
     }
 }
+// TODO check les paramètres !
+matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo) : matrix(n, m, modulo, true) {
 
+}
+
+
+matrix::matrix(const matrix &other) : matrix(other.n, other.m, other.modulo, false){
+    std::cout << "copy matrix" << std::endl << other;
+    // TODO factoriser les constructeurs
+    for (int i = 0; i < this->m; ++i) {
+        for (int j = 0; j < this->n; ++j) {
+            this->data[i][j] = other.data[i][j];
+        }
+    }
+    //std::copy(&other.data[0][0], &other.data[0][0] + other.n * other.m, &this->data[0][0]); TODO ça pourrait être mieux mais ça bug jsp pk
+}
+
+
+matrix::~matrix() {
+    delete[] this->data;
+}
 
 std::ostream &operator<<(std::ostream &os, const matrix &dt) {
     for (int i = 0; i < dt.m; ++i) {
@@ -44,69 +63,25 @@ std::ostream &operator<<(std::ostream &os, matrix* dt) {
     return os;
 }
 
-matrix::~matrix() {
-    delete[] this->data;
-}
-
-matrix::matrix(const matrix &other) {
-    std::cout << "copy matrix" << std::endl << other;
-    // TODO factoriser les constructeurs
-    this->n = other.n;
-    this->m = other.m;
-    this->modulo = other.modulo;
-    this->data = new unsigned* [this->m];
-
-    for (int i = 0; i < this->m; ++i) {
-        this->data[i] = new unsigned [this->n];
-    }
-
-    for (int i = 0; i < this->m; ++i) {
-        for (int j = 0; j < this->n; ++j) {
-            this->data[i][j] = other.data[i][j];
-        }
-    }
-    //std::copy(&other.data[0][0], &other.data[0][0] + other.n * other.m, &this->data[0][0]); TODO ça pourrait être mieux mais ça bug jsp pk
-}
-
 matrix &matrix::operator=(const matrix &other) {
-    if(&other != this){
-        delete this->data;
-
-        std::cout << "operator = matrix" << std::endl << other;
-        // TODO factoriser les constructeurs
-        this->n = other.n;
-        this->m = other.m;
-        this->modulo = other.modulo;
-        this->data = new unsigned* [this->m];
-
-        for (int i = 0; i < this->m; ++i) {
-            this->data[i] = new unsigned [this->n];
-        }
-
-        for (int i = 0; i < this->m; ++i) {
-            for (int j = 0; j < this->n; ++j) {
-                this->data[i][j] = other.data[i][j];
-            }
-        }
-    }
-
-    return *this;
+    return operator=(&other);
 }
 
 matrix &matrix::operator=(const matrix *other) {
-    if(other != this){
-        delete this->data;
 
-        std::cout << "operator = matrix" << std::endl << other;
-        // TODO factoriser les constructeurs
+    if(other != this){
+        // We use a temporary variable to not leave the object in a broken state
+        // in case the allocation throws an exception.
+        unsigned ** tmpData = new unsigned* [other->m];
+        for (int i = 0; i < other->m; ++i) {
+            tmpData[i] = new unsigned [other->n];
+        }
         this->n = other->n;
         this->m = other->m;
         this->modulo = other->modulo;
-        this->data = new unsigned* [this->m];
 
-        for (int i = 0; i < this->m; ++i) {
-            this->data[i] = new unsigned [this->n];
-        }
+        delete this->data;
+        this->data = tmpData;
 
         for (int i = 0; i < this->m; ++i) {
             for (int j = 0; j < this->n; ++j) {
@@ -115,4 +90,6 @@ matrix &matrix::operator=(const matrix *other) {
         }
     }
 
-    return *this;}
+    return *this;
+}
+
