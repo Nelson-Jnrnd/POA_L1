@@ -18,6 +18,8 @@ public:
 
     matrix(const matrix& other);
 
+    matrix multiply(const matrix& other);
+
     matrix& operator= (const matrix& other);
     matrix& operator= (const matrix* other);
 
