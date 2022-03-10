@@ -37,10 +37,7 @@ private:
     unsigned n{}, m{}, modulo{};
     unsigned** data{};
 
-    void fillWithRandomData();
-
     matrix checkMatrixes(const matrix& a, const matrix& b);
-    void print();
 
     matrix(unsigned n, unsigned m, unsigned modulo, bool initRandom);
 };

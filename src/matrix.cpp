@@ -126,3 +126,7 @@ matrix &matrix::operator=(const matrix *other) {
 
     return *this;
 }
+
+matrix matrix::operator-(const matrix &a) {
+   return matrix();
+}
