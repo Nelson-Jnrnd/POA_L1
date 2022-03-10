@@ -15,6 +15,7 @@ matrix::matrix() {
 }
 
 matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
+
     this->n = n;
     this->m = m;
     this->modulo = modulo;
@@ -50,6 +51,9 @@ matrix::matrix(const matrix &other) : matrix(other.n, other.m, other.modulo, fal
 
 
 matrix::~matrix() {
+    for (int i = 0; i < m; ++i) {
+        delete this->data[i];
+    }
     delete[] this->data;
 }
 
@@ -119,6 +123,10 @@ matrix &matrix::operator=(const matrix *other) {
     }
 
     return *this;
+}
+
+matrix matrix::multiply(const matrix &) {
+    return matrix(0, 0, 0);
 }
 
 matrix matrix::operator-(const matrix &a) {
