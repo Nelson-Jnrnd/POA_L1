@@ -10,13 +10,21 @@ using std::endl;
 int main() {
     cout << "project is working" << endl;
 
-    matrix* m = new matrix(5, 5, 3);
-    matrix* n = new matrix(5,5,3);
 
-    matrix p;
+    matrix* m = new matrix(30, 10, 10);
 
-    p = m + n;
+    matrix* p = new matrix(30, 10, 10);
 
+    cout << "test operator : " << endl << m;
+
+    matrix c(*m);
+
+    cout << "test constructor copy : " << endl << c;
+
+    *m = *p;
+
+    cout << "test = operator copy : " << endl << m;
     delete m;
-    delete n;
+    delete p;
+
 }
