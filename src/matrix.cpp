@@ -7,6 +7,13 @@
 #include "iostream"
 
 
+matrix::matrix() {
+   this->n = 0;
+   this->m = 0;
+   this->modulo = 0;
+   this->data = nullptr;
+}
+
 matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
 
     this->n = n;
@@ -67,6 +74,33 @@ std::ostream &operator<<(std::ostream &os, matrix* dt) {
     return os;
 }
 
+matrix matrix::operator+(const matrix& a) {
+   auto* result = new matrix(a.n, a.m, a.modulo);
+   for(unsigned i = 0; i < result->n; ++i){
+      for (unsigned j = 0; j < result->m; ++j) {
+         result->data[i][j] = (this->data[i][j] + a.data[i][j]) % result->modulo;
+      }
+   }
+   return *(result);
+}
+
+matrix matrix::operator+=(matrix &a) {
+   *this = *this + a;
+   return *this;
+}
+
+matrix matrix::operator-=(matrix &a) {
+   *this = *this - a;
+   return *this;
+}
+
+matrix matrix::checkMatrixes(const matrix &a, const matrix &b) {
+   unsigned newN = std::max(a.n, b.n);
+   unsigned newM = std::max(a.m, b.m);
+   unsigned newMod = std::max(a.modulo, b.modulo);
+
+}
+
 matrix &matrix::operator=(const matrix &other) {
     return operator=(&other);
 }
@@ -101,3 +135,6 @@ matrix matrix::multiply(const matrix &) {
     return matrix(0, 0, 0);
 }
 
+matrix matrix::operator-(const matrix &a) {
+   return matrix();
+}

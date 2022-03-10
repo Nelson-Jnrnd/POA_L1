@@ -10,13 +10,23 @@
 class matrix {
 
 public:
-    friend std::ostream& operator<<(std::ostream& os, const matrix& dt);
+
+   friend std::ostream& operator<<(std::ostream& os, const matrix& dt);
     friend std::ostream& operator<<(std::ostream& os, matrix* dt);
 
 
-    matrix(unsigned n, unsigned m, unsigned modulo);
 
-    matrix(const matrix& other);
+   matrix();
+   matrix(unsigned n, unsigned m, unsigned modulo);
+   matrix(const matrix& other);
+
+   matrix operator+(const matrix& a);
+   matrix operator-(const matrix& a);
+
+   matrix operator+=(matrix& a);
+   matrix operator-=(matrix& a);
+
+
 
     matrix multiply(const matrix& other);
 
@@ -25,9 +35,13 @@ public:
 
     virtual ~matrix();
 private:
+
+    unsigned n{}, m{}, modulo{};
+    unsigned** data{};
+
+    matrix checkMatrixes(const matrix& a, const matrix& b);
+
     matrix(unsigned n, unsigned m, unsigned modulo, bool initRandom);
-    unsigned n, m, modulo;
-    unsigned** data;
 };
 
 

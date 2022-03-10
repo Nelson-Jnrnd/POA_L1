@@ -10,6 +10,7 @@ using std::endl;
 int main() {
     cout << "project is working" << endl;
 
+
     matrix* m = new matrix(30, 10, 10);
 
     matrix* p = new matrix(30, 10, 10);
@@ -32,4 +33,5 @@ int main() {
     cout << "p : " << endl << p;
     delete m;
     delete p;
+
 }
