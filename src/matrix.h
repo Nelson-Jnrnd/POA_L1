@@ -6,15 +6,14 @@
 #define POA_L1_MATRIX_H
 
 #include "iostream"
+#include "Operation.h"
 
 class matrix {
 
 public:
 
    friend std::ostream& operator<<(std::ostream& os, const matrix& dt);
-    friend std::ostream& operator<<(std::ostream& os, matrix* dt);
-
-
+   friend std::ostream& operator<<(std::ostream& os, matrix* dt);
 
    matrix();
    matrix(unsigned n, unsigned m, unsigned modulo);
@@ -26,20 +25,20 @@ public:
    matrix operator+=(matrix& a);
    matrix operator-=(matrix& a);
 
-
-
     matrix& operator= (const matrix& other);
     matrix& operator= (const matrix* other);
 
     virtual ~matrix();
+
+    matrix operation(const matrix& other, const Operation op)
 private:
 
-    unsigned n{}, m{}, modulo{};
-    unsigned** data{};
+   matrix(unsigned n, unsigned m, unsigned modulo, bool initRandom);
 
-    matrix checkMatrixes(const matrix& a, const matrix& b);
+   unsigned int n, m, modulo;
+   unsigned int** data;
 
-    matrix(unsigned n, unsigned m, unsigned modulo, bool initRandom);
+   unsigned int getValueOrZero(int i, int j) const;
 };
 
 

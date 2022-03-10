@@ -90,12 +90,6 @@ matrix matrix::operator-=(matrix &a) {
    return *this;
 }
 
-matrix matrix::checkMatrixes(const matrix &a, const matrix &b) {
-   unsigned newN = std::max(a.n, b.n);
-   unsigned newM = std::max(a.m, b.m);
-   unsigned newMod = std::max(a.modulo, b.modulo);
-
-}
 
 matrix &matrix::operator=(const matrix &other) {
     return operator=(&other);
@@ -130,3 +124,25 @@ matrix &matrix::operator=(const matrix *other) {
 matrix matrix::operator-(const matrix &a) {
    return matrix();
 }
+
+matrix matrix::operation(const matrix &other, Operation op) {
+   if(other.modulo != this->modulo)
+      throw std::runtime_error("Error : Not the same modulus");
+
+   matrix* res = new matrix(std::max(this->n, other.n),std::max(this->m, other.m), this->modulo, false);
+
+   for (int i = 0; i < m; ++i) {
+      for (int j = 0; j < n; ++j) {
+
+         res->data[i][j] = op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j));//TODO unsigned partout
+      }
+   }
+
+   return *res;
+}
+
+unsigned int matrix::getValueOrZero(int i, int j) const {
+   return i < this->n && j < this->m ? this->data[i][j] : 0;
+}
+
+
