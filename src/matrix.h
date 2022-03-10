@@ -10,7 +10,8 @@
 class matrix {
 
 public:
-    friend std::ostream& operator<<(std::ostream& os, const matrix& dt);
+
+   friend std::ostream& operator<<(std::ostream& os, const matrix& dt);
     friend std::ostream& operator<<(std::ostream& os, matrix* dt);
 
 
@@ -32,6 +33,7 @@ public:
 
     virtual ~matrix();
 private:
+
     unsigned n{}, m{}, modulo{};
     unsigned** data{};
 
@@ -40,6 +42,7 @@ private:
     matrix checkMatrixes(const matrix& a, const matrix& b);
     void print();
 
+    matrix(unsigned n, unsigned m, unsigned modulo, bool initRandom);
 };
 
 
