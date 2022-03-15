@@ -84,31 +84,32 @@ std::ostream &operator<<(std::ostream &os, matrix* dt) {
     return os;
 }
 
-matrix matrix::operator+(const matrix& a) {
-    return operation(a, ADD);
+const matrix matrix::operator+(const matrix& a) const {
+    return (matrix) *this += a;
 }
 
-matrix matrix::operator-(const matrix &a) {
-    return operation(a, SUB);
+const matrix matrix::operator-(const matrix &a) const {
+    return (matrix) *this -= a;
 }
 
-matrix matrix::operator*(const matrix &a) {
-    return operation(a, MUL);
+const matrix matrix::operator*(const matrix &a) const {
+    return (matrix) *this *= a;
 }
 
 // TODO check comment faire les +=
-matrix matrix::operator+=(matrix &a) {
-   *this = *this + a;
+// TODO check le self assignment
+matrix& matrix::operator+=(const matrix &a) {
+    *this = operation(a, ADD);
+    return *this;
+}
+
+matrix& matrix::operator-=(const matrix &a) {
+    *this = operation(a, SUB);
    return *this;
 }
 
-matrix matrix::operator-=(matrix &a) {
-   *this = *this - a;
-   return *this;
-}
-
-matrix matrix::operator*=(matrix &a) {
-    *this = *this * a;
+matrix& matrix::operator*=(const matrix &a) {
+    *this = operation(a, MUL);
     return *this;
 }
 
@@ -155,11 +156,18 @@ matrix matrix::operation(const matrix &other, const Operation &op) {
     for (int i = 0; i < m; ++i) {
         for (int j = 0; j < n; ++j) {
 
-            res->data[i][j] = op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j));//TODO unsigned partout
+            res->setValue(i, j, op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j))); //TODO unsigned partout
         }
     }
 
     return *res;
+}
+
+void matrix::setValue(unsigned int i, unsigned int j, unsigned int value) {
+    if(i >= n || j >= m)
+        throw std::runtime_error("Error out of bounds");
+
+    data[i][j] = value % modulo;
 }
 
 

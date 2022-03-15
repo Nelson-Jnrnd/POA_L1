@@ -34,17 +34,19 @@ int main() {
 
     cout << "test + operator : " << endl;
 
-    cout << "m + p " << endl << *m + *p;
+    cout << "m + p " << endl << (*m + *p);
 
     cout << "test - operator : " << endl;
 
-    cout << "m - p " << endl << *m - *p;
+    cout << "m - p " << endl << (*m - *p);
 
     cout << "test * operator : " << endl;
 
-    cout << "m * p " << endl << *m * *p;
+    cout << "m * p " << endl << (*m * *p);
 
+    matrix a(5, 5, 5), b(5, 5, 5), d(5, 5, 5);
 
+    //(a + b) = d;
 
     delete m;
     delete p;

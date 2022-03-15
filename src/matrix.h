@@ -26,13 +26,13 @@ public:
    matrix(unsigned n, unsigned m, unsigned modulo);
    matrix(const matrix& other);
 
-   matrix operator+(const matrix& a);
-   matrix operator-(const matrix& a);
-    matrix operator*(const matrix& a);
+   const matrix operator+(const matrix& a) const;
+   const matrix operator-(const matrix& a) const;
+   const matrix operator*(const matrix& a) const;
 
-   matrix operator+=(matrix& a);
-   matrix operator-=(matrix& a);
-    matrix operator*=(matrix& a);
+   matrix& operator+=(const matrix& a);
+   matrix& operator-=(const matrix& a);
+    matrix& operator*=(const matrix& a);
    
     matrix& operator= (const matrix& other);
     matrix& operator= (const matrix* other);
@@ -40,6 +40,7 @@ public:
     virtual ~matrix();
 
     matrix operation(const matrix& other, const Operation& op);
+    void setValue(unsigned i, unsigned j, unsigned value);
 };
 
 
