@@ -4,6 +4,6 @@
 
 #include "Sub.h"
 
-int Sub::calculate(int a, int b) {
-   return (a - b);
+int Sub::calculate(int a, int b) const {
+    return (a - b);
 }

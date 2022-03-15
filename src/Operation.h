@@ -5,12 +5,10 @@
 #ifndef POA_L1_OPERATION_H
 #define POA_L1_OPERATION_H
 
-#include "matrix.h"
-
 class Operation {
 
 public:
-   virtual int calculate(int a, int b) = 0;
+   virtual int calculate(int a, int b) const = 0;
 
 };
 

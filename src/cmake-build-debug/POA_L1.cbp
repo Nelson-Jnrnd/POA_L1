@@ -80,6 +80,27 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Add.cpp">
+			<Option target="POA_L1"/>
+		</Unit>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Add.h">
+			<Option target="POA_L1"/>
+		</Unit>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Multiply.cpp">
+			<Option target="POA_L1"/>
+		</Unit>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Multiply.h">
+			<Option target="POA_L1"/>
+		</Unit>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h">
+			<Option target="POA_L1"/>
+		</Unit>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Sub.cpp">
+			<Option target="POA_L1"/>
+		</Unit>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Sub.h">
+			<Option target="POA_L1"/>
+		</Unit>
 		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/main.cpp">
 			<Option target="POA_L1"/>
 		</Unit>

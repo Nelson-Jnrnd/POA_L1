@@ -5,14 +5,24 @@
 #include "matrix.h"
 #include <cstdlib>
 #include "iostream"
+#include "Add.h"
+#include "Sub.h"
+#include "Multiply.h"
 
 
-matrix::matrix() {
+const static Add ADD = Add();
+const static Sub SUB = Sub();
+const static Multiply MUL = Multiply();
+
+// Constructors...
+
+matrix::matrix() { // TODO pk y a ça ?
    this->n = 0;
    this->m = 0;
    this->modulo = 0;
    this->data = nullptr;
 }
+
 
 matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
 
@@ -33,10 +43,7 @@ matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRan
     }
 }
 // TODO check les paramètres !
-matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo) : matrix(n, m, modulo, true) {
-
-}
-
+matrix::matrix(unsigned int n, unsigned int m, unsigned int modulo) : matrix(n, m, modulo, true) {}
 
 matrix::matrix(const matrix &other) : matrix(other.n, other.m, other.modulo, false){
     std::cout << "copy matrix" << std::endl << other;
@@ -49,6 +56,7 @@ matrix::matrix(const matrix &other) : matrix(other.n, other.m, other.modulo, fal
     //std::copy(&other.data[0][0], &other.data[0][0] + other.n * other.m, &this->data[0][0]); TODO ça pourrait être mieux mais ça bug jsp pk
 }
 
+// Destructor...
 
 matrix::~matrix() {
     for (int i = 0; i < m; ++i) {
@@ -56,6 +64,8 @@ matrix::~matrix() {
     }
     delete[] this->data;
 }
+
+// Operators...
 
 std::ostream &operator<<(std::ostream &os, const matrix &dt) {
     for (int i = 0; i < dt.m; ++i) {
@@ -75,15 +85,18 @@ std::ostream &operator<<(std::ostream &os, matrix* dt) {
 }
 
 matrix matrix::operator+(const matrix& a) {
-   auto* result = new matrix(a.n, a.m, a.modulo);
-   for(unsigned i = 0; i < result->n; ++i){
-      for (unsigned j = 0; j < result->m; ++j) {
-         result->data[i][j] = (this->data[i][j] + a.data[i][j]) % result->modulo;
-      }
-   }
-   return *(result);
+    return operation(a, ADD);
 }
 
+matrix matrix::operator-(const matrix &a) {
+    return operation(a, SUB);
+}
+
+matrix matrix::operator*(const matrix &a) {
+    return operation(a, MUL);
+}
+
+// TODO check comment faire les +=
 matrix matrix::operator+=(matrix &a) {
    *this = *this + a;
    return *this;
@@ -94,6 +107,10 @@ matrix matrix::operator-=(matrix &a) {
    return *this;
 }
 
+matrix matrix::operator*=(matrix &a) {
+    *this = *this * a;
+    return *this;
+}
 
 matrix &matrix::operator=(const matrix &other) {
     return operator=(&other);
@@ -125,32 +142,24 @@ matrix &matrix::operator=(const matrix *other) {
     return *this;
 }
 
-matrix matrix::multiply(const matrix &) {
-    return matrix(0, 0, 0);
-}
-
-matrix matrix::operator-(const matrix &a) {
-   return matrix();
-}
-
-matrix matrix::operation(const matrix &other, Operation op) {
-   if(other.modulo != this->modulo)
-      throw std::runtime_error("Error : Not the same modulus");
-
-   matrix* res = new matrix(std::max(this->n, other.n),std::max(this->m, other.m), this->modulo, false);
-
-   for (int i = 0; i < m; ++i) {
-      for (int j = 0; j < n; ++j) {
-
-         res->data[i][j] = op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j));//TODO unsigned partout
-      }
-   }
-
-   return *res;
-}
-
 unsigned int matrix::getValueOrZero(int i, int j) const {
    return i < this->n && j < this->m ? this->data[i][j] : 0;
+}
+
+matrix matrix::operation(const matrix &other, const Operation &op) {
+    if(other.modulo != this->modulo)
+        throw std::runtime_error("Error : Not the same modulus");
+
+    matrix* res = new matrix(std::max(this->n, other.n),std::max(this->m, other.m), this->modulo, false);
+
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+
+            res->data[i][j] = op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j));//TODO unsigned partout
+        }
+    }
+
+    return *res;
 }
 
 

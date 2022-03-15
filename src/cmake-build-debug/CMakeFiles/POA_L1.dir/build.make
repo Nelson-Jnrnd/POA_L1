@@ -89,9 +89,48 @@ CMakeFiles/POA_L1.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POA_L1.dir/main.cpp.s"
 	P:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\prog\heigVD_2021\POA\POA_L1\src\main.cpp -o CMakeFiles\POA_L1.dir\main.cpp.s
 
+CMakeFiles/POA_L1.dir/Add.cpp.obj: CMakeFiles/POA_L1.dir/flags.make
+CMakeFiles/POA_L1.dir/Add.cpp.obj: ../Add.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\prog\heigVD_2021\POA\POA_L1\src\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/POA_L1.dir/Add.cpp.obj"
+	P:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POA_L1.dir\Add.cpp.obj -c D:\prog\heigVD_2021\POA\POA_L1\src\Add.cpp
+
+CMakeFiles/POA_L1.dir/Add.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POA_L1.dir/Add.cpp.i"
+	P:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\prog\heigVD_2021\POA\POA_L1\src\Add.cpp > CMakeFiles\POA_L1.dir\Add.cpp.i
+
+CMakeFiles/POA_L1.dir/Add.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POA_L1.dir/Add.cpp.s"
+	P:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\prog\heigVD_2021\POA\POA_L1\src\Add.cpp -o CMakeFiles\POA_L1.dir\Add.cpp.s
+
+CMakeFiles/POA_L1.dir/Sub.cpp.obj: CMakeFiles/POA_L1.dir/flags.make
+CMakeFiles/POA_L1.dir/Sub.cpp.obj: ../Sub.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\prog\heigVD_2021\POA\POA_L1\src\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/POA_L1.dir/Sub.cpp.obj"
+	P:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POA_L1.dir\Sub.cpp.obj -c D:\prog\heigVD_2021\POA\POA_L1\src\Sub.cpp
+
+CMakeFiles/POA_L1.dir/Sub.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POA_L1.dir/Sub.cpp.i"
+	P:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\prog\heigVD_2021\POA\POA_L1\src\Sub.cpp > CMakeFiles\POA_L1.dir\Sub.cpp.i
+
+CMakeFiles/POA_L1.dir/Sub.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POA_L1.dir/Sub.cpp.s"
+	P:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\prog\heigVD_2021\POA\POA_L1\src\Sub.cpp -o CMakeFiles\POA_L1.dir\Sub.cpp.s
+
+CMakeFiles/POA_L1.dir/Multiply.cpp.obj: CMakeFiles/POA_L1.dir/flags.make
+CMakeFiles/POA_L1.dir/Multiply.cpp.obj: ../Multiply.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\prog\heigVD_2021\POA\POA_L1\src\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/POA_L1.dir/Multiply.cpp.obj"
+	P:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POA_L1.dir\Multiply.cpp.obj -c D:\prog\heigVD_2021\POA\POA_L1\src\Multiply.cpp
+
+CMakeFiles/POA_L1.dir/Multiply.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POA_L1.dir/Multiply.cpp.i"
+	P:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\prog\heigVD_2021\POA\POA_L1\src\Multiply.cpp > CMakeFiles\POA_L1.dir\Multiply.cpp.i
+
+CMakeFiles/POA_L1.dir/Multiply.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POA_L1.dir/Multiply.cpp.s"
+	P:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\prog\heigVD_2021\POA\POA_L1\src\Multiply.cpp -o CMakeFiles\POA_L1.dir\Multiply.cpp.s
+
 CMakeFiles/POA_L1.dir/matrix.cpp.obj: CMakeFiles/POA_L1.dir/flags.make
 CMakeFiles/POA_L1.dir/matrix.cpp.obj: ../matrix.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\prog\heigVD_2021\POA\POA_L1\src\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/POA_L1.dir/matrix.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\prog\heigVD_2021\POA\POA_L1\src\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/POA_L1.dir/matrix.cpp.obj"
 	P:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\POA_L1.dir\matrix.cpp.obj -c D:\prog\heigVD_2021\POA\POA_L1\src\matrix.cpp
 
 CMakeFiles/POA_L1.dir/matrix.cpp.i: cmake_force
@@ -105,18 +144,24 @@ CMakeFiles/POA_L1.dir/matrix.cpp.s: cmake_force
 # Object files for target POA_L1
 POA_L1_OBJECTS = \
 "CMakeFiles/POA_L1.dir/main.cpp.obj" \
+"CMakeFiles/POA_L1.dir/Add.cpp.obj" \
+"CMakeFiles/POA_L1.dir/Sub.cpp.obj" \
+"CMakeFiles/POA_L1.dir/Multiply.cpp.obj" \
 "CMakeFiles/POA_L1.dir/matrix.cpp.obj"
 
 # External object files for target POA_L1
 POA_L1_EXTERNAL_OBJECTS =
 
 POA_L1.exe: CMakeFiles/POA_L1.dir/main.cpp.obj
+POA_L1.exe: CMakeFiles/POA_L1.dir/Add.cpp.obj
+POA_L1.exe: CMakeFiles/POA_L1.dir/Sub.cpp.obj
+POA_L1.exe: CMakeFiles/POA_L1.dir/Multiply.cpp.obj
 POA_L1.exe: CMakeFiles/POA_L1.dir/matrix.cpp.obj
 POA_L1.exe: CMakeFiles/POA_L1.dir/build.make
 POA_L1.exe: CMakeFiles/POA_L1.dir/linklibs.rsp
 POA_L1.exe: CMakeFiles/POA_L1.dir/objects1.rsp
 POA_L1.exe: CMakeFiles/POA_L1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\prog\heigVD_2021\POA\POA_L1\src\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable POA_L1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\prog\heigVD_2021\POA\POA_L1\src\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable POA_L1.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\POA_L1.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

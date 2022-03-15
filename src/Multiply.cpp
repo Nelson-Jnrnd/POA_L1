@@ -4,6 +4,6 @@
 
 #include "Multiply.h"
 
-int Multiply::calculate(int a, int b) {
-   return a * b;
+int Multiply::calculate(int a, int b) const {
+    return a * b;
 }

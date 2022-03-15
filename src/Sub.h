@@ -11,7 +11,7 @@
 class Sub : public Operation{
 public:
 
-   int calculate(int a, int b) override;
+   int calculate(int a, int b) const override;
 };
 
 

@@ -142,6 +142,87 @@ POA_L1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\POA_L1.dir\build.make CMakeFiles/POA_L1.dir/build
 .PHONY : POA_L1/fast
 
+Add.obj: Add.cpp.obj
+
+.PHONY : Add.obj
+
+# target to build an object file
+Add.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POA_L1.dir\build.make CMakeFiles/POA_L1.dir/Add.cpp.obj
+.PHONY : Add.cpp.obj
+
+Add.i: Add.cpp.i
+
+.PHONY : Add.i
+
+# target to preprocess a source file
+Add.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POA_L1.dir\build.make CMakeFiles/POA_L1.dir/Add.cpp.i
+.PHONY : Add.cpp.i
+
+Add.s: Add.cpp.s
+
+.PHONY : Add.s
+
+# target to generate assembly for a file
+Add.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POA_L1.dir\build.make CMakeFiles/POA_L1.dir/Add.cpp.s
+.PHONY : Add.cpp.s
+
+Multiply.obj: Multiply.cpp.obj
+
+.PHONY : Multiply.obj
+
+# target to build an object file
+Multiply.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POA_L1.dir\build.make CMakeFiles/POA_L1.dir/Multiply.cpp.obj
+.PHONY : Multiply.cpp.obj
+
+Multiply.i: Multiply.cpp.i
+
+.PHONY : Multiply.i
+
+# target to preprocess a source file
+Multiply.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POA_L1.dir\build.make CMakeFiles/POA_L1.dir/Multiply.cpp.i
+.PHONY : Multiply.cpp.i
+
+Multiply.s: Multiply.cpp.s
+
+.PHONY : Multiply.s
+
+# target to generate assembly for a file
+Multiply.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POA_L1.dir\build.make CMakeFiles/POA_L1.dir/Multiply.cpp.s
+.PHONY : Multiply.cpp.s
+
+Sub.obj: Sub.cpp.obj
+
+.PHONY : Sub.obj
+
+# target to build an object file
+Sub.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POA_L1.dir\build.make CMakeFiles/POA_L1.dir/Sub.cpp.obj
+.PHONY : Sub.cpp.obj
+
+Sub.i: Sub.cpp.i
+
+.PHONY : Sub.i
+
+# target to preprocess a source file
+Sub.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POA_L1.dir\build.make CMakeFiles/POA_L1.dir/Sub.cpp.i
+.PHONY : Sub.cpp.i
+
+Sub.s: Sub.cpp.s
+
+.PHONY : Sub.s
+
+# target to generate assembly for a file
+Sub.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\POA_L1.dir\build.make CMakeFiles/POA_L1.dir/Sub.cpp.s
+.PHONY : Sub.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -205,6 +286,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... POA_L1
+	@echo ... Add.obj
+	@echo ... Add.i
+	@echo ... Add.s
+	@echo ... Multiply.obj
+	@echo ... Multiply.i
+	@echo ... Multiply.s
+	@echo ... Sub.obj
+	@echo ... Sub.i
+	@echo ... Sub.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
