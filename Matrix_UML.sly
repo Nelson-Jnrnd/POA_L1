@@ -118,15 +118,15 @@
       <method isAbstract="false" isStatic="false" name="operator=" returnType="Matrix&amp;" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="other" type="Matrix*_const"/>
       </method>
-      <method isAbstract="false" isStatic="false" name="operation_Const" returnType="Matrix" view="DEFAULT" visibility="PRIVATE">
+      <method isAbstract="false" isStatic="false" name="operation_Const" returnType="Matrix" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="other" type="Matrix&amp;_const"/>
         <variable const="false" name="op" type="Operation&amp;_const"/>
       </method>
-      <method isAbstract="false" isStatic="false" name="operationByValue_Const" returnType="Matrix" view="DEFAULT" visibility="PRIVATE">
+      <method isAbstract="false" isStatic="false" name="operationByValue_Const" returnType="Matrix" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="other" type="Matrix&amp;_const"/>
         <variable const="false" name="op" type="Operation&amp;_const"/>
       </method>
-      <method isAbstract="false" isStatic="false" name="operationByPtr_Const" returnType="Matrix*" view="DEFAULT" visibility="PRIVATE">
+      <method isAbstract="false" isStatic="false" name="operationByPtr_Const" returnType="Matrix*" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="other" type="Matrix&amp;_const"/>
         <variable const="false" name="op" type="Operation&amp;_const"/>
       </method>
