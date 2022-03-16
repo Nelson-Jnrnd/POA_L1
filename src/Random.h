@@ -12,6 +12,9 @@
  */
 class Random {
 
+   /**
+    * Default constructor
+    */
    Random();
 
 public:
@@ -23,6 +26,7 @@ public:
      * the class.
      */
    static Random* getInstance();
+
     /**
       * Generate a random number between 1 and n
       *

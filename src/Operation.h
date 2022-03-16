@@ -11,6 +11,7 @@
  */
 class Operation {
 public:
+
     /**
      * Calculate the operation between two unsigned int.
      * @param a first operand.

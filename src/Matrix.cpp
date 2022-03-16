@@ -42,7 +42,7 @@ Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRan
 Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo) : Matrix(n, m, modulo, true) {}
 
 Matrix::Matrix(const Matrix &other) : Matrix(other.n, other.m, other.modulo, false){
-    std::cout << "copy Matrix" << std::endl << other;
+    std::cout << "copy Matrix" << std::endl;
     for (unsigned i = 0; i < this->m; ++i) {
         for (unsigned j = 0; j < this->n; ++j) {
             this->data[i][j] = other.data[i][j];
@@ -67,7 +67,7 @@ std::ostream &operator<<(std::ostream &os, const Matrix &dt) {
         for (int j = 0; j < dt.n; ++j) {
             os << dt.data[i][j];
             if(j + 1 < dt.n)
-                os << "";
+                os << " ";
         }
         os << std::endl;
     }
@@ -120,10 +120,10 @@ Matrix Matrix::operation(const Matrix &other, const Operation &op) const{
 
     Matrix* res = new Matrix(std::max(this->n, other.n), std::max(this->m, other.m), this->modulo, false);
 
-    for (unsigned i = 0; i < m; ++i) {
-        for (unsigned j = 0; j < n; ++j) {
+    for (unsigned i = 0; i < n; ++i) {
+        for (unsigned j = 0; j < m; ++j) {
 
-            res->setValue(i, j, op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j))); //TODO unsigned partout
+            res->setValue(i, j, op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j)));
         }
     }
 

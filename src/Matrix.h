@@ -17,14 +17,17 @@ class Matrix {
      * the number of rows in the matrix
      */
     unsigned int n;
+
     /**
-     * the number of rows in the matrix
+     * the number of columns in the matrix
      */
     unsigned int m;
+
     /**
      * Modulo for the numbers contained in the matrix
      */
     unsigned int modulo;
+
     /**
      * Array containing the numbers of the matrix
      */
