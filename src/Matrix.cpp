@@ -50,7 +50,6 @@ Matrix::Matrix(const Matrix &other) : Matrix(other.n, other.m, other.modulo, fal
     }
 }
 
-
 /**
  * Deletes the dynamically allocated memory for the data member
  */
@@ -102,7 +101,6 @@ Matrix & Matrix::operator=(const Matrix *other) {
         this->m = other->m;
         this->modulo = other->modulo;
 
-
         this->data = tmpData;
         for (int i = 0; i < this->n; ++i) {
             for (int j = 0; j < this->m; ++j) {
@@ -113,7 +111,6 @@ Matrix & Matrix::operator=(const Matrix *other) {
 
     return *this;
 }
-
 
 unsigned int Matrix::getValueOrZero(unsigned i, unsigned j) const {
     return i < this->n && j < this->m ? this->data[i][j] : 0;
@@ -145,7 +142,6 @@ Matrix& Matrix::operation(const Matrix &other, const Operation &op) {
     return *this;
 }
 
-
 Matrix *Matrix::operationByPtr(const Matrix &other, const Operation &op) const {
     if(other.modulo != this->modulo)
         throw std::invalid_argument("Error : Not the same modulus");
@@ -154,7 +150,6 @@ Matrix *Matrix::operationByPtr(const Matrix &other, const Operation &op) const {
 
     for (unsigned i = 0; i < n; ++i) {
         for (unsigned j = 0; j < m; ++j) {
-
             res->setValue(i, j, op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j)));
         }
     }
@@ -163,7 +158,18 @@ Matrix *Matrix::operationByPtr(const Matrix &other, const Operation &op) const {
 }
 
 Matrix Matrix::operationByValue(const Matrix &other, const Operation &op) const {
-    return *operationByPtr(other, op);
+    if(other.modulo != this->modulo)
+        throw std::invalid_argument("Error : Not the same modulus");
+
+    Matrix res = Matrix(std::max(this->n, other.n), std::max(this->m, other.m), this->modulo, false);
+
+    for (unsigned i = 0; i < n; ++i) {
+        for (unsigned j = 0; j < m; ++j) {
+            res.setValue(i, j, op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j)));
+        }
+    }
+
+    return res;
 }
 
 void Matrix::setValue(unsigned int i, unsigned int j, unsigned int value) {
