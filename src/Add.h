@@ -8,6 +8,13 @@
 
 #include "Operation.h"
 
+/**
+ * Add operation.
+ *
+ * @author Nelson Jeanrenaud
+ * @author André Marques Nora
+ * @version 1.0
+ */
 class Add : public Operation{
 public:
 

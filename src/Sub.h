@@ -8,6 +8,13 @@
 
 #include "Operation.h"
 
+/**
+ * Substraction operation.
+ *
+ * @author Nelson Jeanrenaud
+ * @author André Marques Nora
+ * @version 1.0
+ */
 class Sub : public Operation{
 public:
 

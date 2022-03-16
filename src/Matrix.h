@@ -1,13 +1,16 @@
-//
-// Created by NelsonWork on 24.02.2022.
-//
-
 #ifndef POA_L1_MATRIX_H
 #define POA_L1_MATRIX_H
 
 #include "iostream"
 #include "Operation.h"
 
+/**
+ * Matrix of unsigned int.
+ *
+ * @author Nelson Jeanrenaud
+ * @author André Marques Nora
+ * @version 1.0
+ */
 class Matrix {
 
     /**

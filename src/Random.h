@@ -3,6 +3,13 @@
 
 #include <cstdlib>
 
+/**
+ * Singleton Random unsigned int generator.
+ *
+ * @author Nelson Jeanrenaud
+ * @author André Marques Nora
+ * @version 1.0
+ */
 class Random {
 
    Random();

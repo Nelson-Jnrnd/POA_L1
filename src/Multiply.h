@@ -8,6 +8,13 @@
 
 #include "Operation.h"
 
+/**
+ * Multiplication operation.
+ *
+ * @author Nelson Jeanrenaud
+ * @author André Marques Nora
+ * @version 1.0
+ */
 class Multiply : public Operation{
 public:
 
