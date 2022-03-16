@@ -4,6 +4,6 @@
 
 #include "Add.h"
 
-int Add::calculate(int a, int b) const {
-    return (a + b);
+int Add::calculate(unsigned a, unsigned b) const {
+    return a + b;
 }

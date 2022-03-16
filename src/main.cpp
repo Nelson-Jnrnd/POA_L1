@@ -1,9 +1,5 @@
-//
-// Created by NelsonWork on 24.02.2022.
-//
-
 #include <iostream>
-#include "matrix.h"
+#include "Matrix.h"
 using std::cout;
 using std::endl;
 
@@ -11,13 +7,13 @@ int main() {
     cout << "project is working" << endl;
 
 
-    matrix* m = new matrix(5, 5, 10);
+    Matrix* m = new Matrix(5, 5, 10);
 
-    matrix* p = new matrix(5, 5, 10);
+    Matrix* p = new Matrix(5, 5, 10);
 
     cout << "test operator : " << endl << m;
 
-    matrix c(*m);
+    Matrix c(*m);
 
     cout << "test constructor copy : " << endl << c;
 
@@ -44,7 +40,7 @@ int main() {
 
     cout << "m * p " << endl << (*m * *p);
 
-    matrix a(5, 5, 5), b(5, 5, 5), d(5, 5, 5);
+    Matrix a(5, 5, 5), b(5, 5, 5), d(5, 5, 5);
 
     //(a + b) = d;
 
