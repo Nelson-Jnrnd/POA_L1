@@ -82,7 +82,7 @@ std::ostream &operator<<(std::ostream &os, Matrix* dt) {
     return os;
 }
 
-Matrix &Matrix::operator=(const Matrix &other) const{
+Matrix &Matrix::operator=(const Matrix &other){
     return operator=(&other);
 }
 
@@ -91,9 +91,9 @@ Matrix & Matrix::operator=(const Matrix *other) {
     if(other != this){
         // We use a temporary variable to not leave the object in a broken state
         // in case the allocation throws an exception.
-        unsigned ** tmpData = new unsigned* [other->m];
-        for (int i = 0; i < other->m; ++i) {
-            tmpData[i] = new unsigned [other->n];
+        unsigned** tmpData = new unsigned* [other->n];
+        for (int i = 0; i < other->n; ++i) {
+            tmpData[i] = new unsigned [other->m];
         }
         this->n = other->n;
         this->m = other->m;
@@ -102,8 +102,8 @@ Matrix & Matrix::operator=(const Matrix *other) {
         delete this->data;
         this->data = tmpData;
 
-        for (int i = 0; i < this->m; ++i) {
-            for (int j = 0; j < this->n; ++j) {
+        for (int i = 0; i < this->n; ++i) {
+            for (int j = 0; j < this->m; ++j) {
                 this->data[i][j] = other->data[i][j];
             }
         }
@@ -145,15 +145,15 @@ Matrix Matrix::add(const Matrix &other) {
    return *this;
 }
 
-Matrix Matrix::addByValue(const Matrix &other) {
+Matrix Matrix::addByValue(const Matrix &other) const {
    Matrix res;
    res = this->operation(other, ADD);
    return res;
 }
 
-Matrix *Matrix::addByPtr(const Matrix &other) {
-   Matrix res = *new Matrix();
-   res =  this->operation(other,ADD);
+Matrix *Matrix::addByPtr(const Matrix &other) const {
+   Matrix* res = new Matrix();
+   *res =  this->operation(other,ADD);
    return res;
 }
 
@@ -162,16 +162,33 @@ Matrix Matrix::sub(const Matrix &other) {
    return *this;
 }
 
-Matrix Matrix::subByValue(const Matrix &other) {
+Matrix Matrix::subByValue(const Matrix &other) const {
    Matrix res;
    res = this->operation(other, SUB);
    return res;
 }
 
-Matrix *Matrix::subByPtr(const Matrix &other) {
-   Matrix res = *new Matrix();
-   res =  this->operation(other,SUB);
-   return &res;
+Matrix *Matrix::subByPtr(const Matrix &other) const {
+   Matrix* res = new Matrix();
+   *res =  this->operation(other,SUB);
+   return res;
+}
+
+Matrix Matrix::mult(const Matrix &other) {
+   *this = this->operation(other, SUB);
+   return *this;
+}
+
+Matrix Matrix::multByValue(const Matrix &other) const {
+   Matrix res;
+   res = this->operation(other, MUL);
+   return res;
+}
+
+Matrix *Matrix::multByPtr(const Matrix &other) const {
+   Matrix* res = new Matrix();
+   *res =  this->operation(other,MUL);
+   return res;
 }
 
 

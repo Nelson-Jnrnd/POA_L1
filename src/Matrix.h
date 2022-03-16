@@ -28,19 +28,19 @@ public:
    virtual ~Matrix();
 
    Matrix& operator= (const Matrix& other);
-
+   Matrix& operator= (const Matrix *other);
 
    Matrix add(const Matrix& other);
-   Matrix addByValue(const Matrix& other);
-   Matrix* addByPtr(const Matrix& other);
+   Matrix addByValue(const Matrix& other) const;
+   Matrix* addByPtr(const Matrix& other) const;
 
    Matrix sub(const Matrix& other);
-   Matrix subByValue(const Matrix& other);
-   Matrix* subByPtr(const Matrix& other);
+   Matrix subByValue(const Matrix& other) const;
+   Matrix* subByPtr(const Matrix& other) const;
 
    Matrix mult(const Matrix& other);
-   Matrix multByValue(const Matrix& other);
-   Matrix* multByPtr(const Matrix& other);
+   Matrix multByValue(const Matrix& other) const;
+   Matrix* multByPtr(const Matrix& other) const;
 
    Matrix operation(const Matrix& other, const Operation& op) const;
    void setValue(unsigned i, unsigned j, unsigned value);
