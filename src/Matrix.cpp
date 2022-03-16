@@ -58,7 +58,6 @@ Matrix::Matrix(const Matrix &other) : Matrix(other.n, other.m, other.modulo, fal
     }
 }
 
-
 /**
  * Deletes the dynamically allocated memory for the data member
  */
@@ -117,11 +116,11 @@ void Matrix::recreateMatrix(unsigned int n, unsigned int m,
     for (int i = 0; i < n; ++i) {
         tmpData[i] = new unsigned [m];
     }
+    deleteValues();
     this->n = n;
     this->m = m;
     this->modulo = modulo;
 
-    deleteValues();
     this->data = tmpData;
 }
 

@@ -1,6 +1,7 @@
 #include "Random.h"
 #include <ctime>
 
+Random* Random::instance = nullptr;
 /**
  * The constructor initializes the random number generator with the current time
  */
@@ -9,7 +10,6 @@ Random::Random() {
 }
 
 Random* Random::getInstance() {
-    static Random* instance;
     if(!instance)
         instance = new Random;
     return instance;

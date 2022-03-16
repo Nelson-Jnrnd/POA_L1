@@ -12,10 +12,14 @@
  */
 class Random {
 
-   /**
-    * Default constructor
-    */
-   Random();
+    /**
+     * Single instance of the random class
+     */
+    static Random* instance;
+    /**
+     * Default constructor
+     */
+    Random();
 
 public:
 
@@ -25,7 +29,7 @@ public:
      * @return The Random class is a singleton.  The getInstance() method returns the single instance of
      * the class.
      */
-   static Random* getInstance();
+    static Random* getInstance();
 
     /**
       * Generate a random number between 1 and n
@@ -33,7 +37,16 @@ public:
       * @param n The upper bound of the number generated.
       * @return A random number between 1 and n.
       */
-   unsigned int getRandom(unsigned n);
+    unsigned int getRandom(unsigned n);
+
+    /**
+     * Singleton class can't be copied
+     */
+    Random(Random &other) = delete;
+    /**
+     * Singleton class can't be assigned
+     */
+    void operator=(const Random &) = delete;
 };
 
 
