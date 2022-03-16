@@ -29,7 +29,7 @@ public:
       * @param n The upper bound of the number generated.
       * @return A random number between 1 and n.
       */
-   unsigned int getRandom(unsigned n) ;
+   unsigned int getRandom(unsigned n);
 };
 
 

@@ -28,13 +28,13 @@ int main() {
     cout << "m : " << endl << m;
     cout << "p : " << endl << p;
 
-    cout << "test + operator : " << endl;
+    cout << "test + operator : " << m->addByValue(*p) << endl;
 
 
-    cout << "test - operator : " << endl;
+    cout << "test - operator : " << m->sub(*p) << endl;
 
 
-    cout << "test * operator : " << endl;
+    cout << "test * operator : " << m->mult(*p) << endl;
 
 
     Matrix a(5, 5, 5), b(5, 5, 5), d(5, 5, 5);

@@ -137,7 +137,7 @@ void Matrix::setValue(unsigned int i, unsigned int j, unsigned int value) {
     data[i][j] = value % modulo;
 }
 
-Matrix Matrix::add(const Matrix &other) {
+Matrix& Matrix::add(const Matrix &other) {
     *this = this->operation(other, ADD);
     return *this;
 }
@@ -154,7 +154,7 @@ Matrix *Matrix::addByPtr(const Matrix &other) const {
     return res;
 }
 
-Matrix Matrix::sub(const Matrix &other) {
+Matrix& Matrix::sub(const Matrix &other) {
     *this = this->operation(other, SUB);
     return *this;
 }
@@ -171,7 +171,7 @@ Matrix *Matrix::subByPtr(const Matrix &other) const {
     return res;
 }
 
-Matrix Matrix::mult(const Matrix &other) {
+Matrix& Matrix::mult(const Matrix &other) {
     *this = this->operation(other, SUB);
     return *this;
 }

@@ -30,6 +30,8 @@ class Matrix {
      */
     unsigned int** data;
 
+    Matrix();
+
     /**
      * Create a matrix with n rows and m columns
      * 
@@ -57,8 +59,6 @@ public:
     Matrix& operator= (const Matrix& other);
     Matrix& operator= (const Matrix *other);
 
-    Matrix();
-
     /**
       * Create a matrix with n rows and m columns
       *
@@ -83,7 +83,7 @@ public:
      * @param other The matrix to add to this one.
      * @return a reference to this object
      */
-    Matrix add(const Matrix& other);
+    Matrix& add(const Matrix& other);
     /**
      * Add two matrices together by value
      *
@@ -106,7 +106,7 @@ public:
      * @param other The matrix to subtract from this matrix.
      * @return a reference to this object.
      */
-    Matrix sub(const Matrix& other);
+    Matrix& sub(const Matrix& other);
     /**
      * Subtracts the values of the other matrix from the values of this matrix
      *
@@ -129,7 +129,7 @@ public:
      * @param other The matrix to subtract from this matrix.
      * @return a reference to this object.
      */
-    Matrix mult(const Matrix& other);
+    Matrix& mult(const Matrix& other);
     /**
       * Multiply the matrix by a another matrix
       *
