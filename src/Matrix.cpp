@@ -10,7 +10,7 @@ const static Add ADD = Add();
 const static Sub SUB = Sub();
 const static Multiply MUL = Multiply();
 
-Matrix::Matrix() { // TODO pk y a ça ?
+Matrix::Matrix() {
     this->n = 0;
     this->m = 0;
     this->modulo = 0;
@@ -19,8 +19,6 @@ Matrix::Matrix() { // TODO pk y a ça ?
 
 
 Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
-    // TODO check les paramètres !
-
     Random* rand = Random::getInstance();
     this->n = n;
     this->m = m;
@@ -129,7 +127,7 @@ Matrix& Matrix::operation(const Matrix &other, const Operation &op) {
     if(other.modulo != this->modulo)
         throw std::invalid_argument("Error : Not the same modulus");
 
-    recreateMatrix(std::max(this->n, other.n), std::max(this->m, other.m), this->modulo);
+    //recreateMatrix(std::max(this->n, other.n), std::max(this->m, other.m), this->modulo);
 
     for (unsigned i = 0; i < m; ++i) {
         for (unsigned j = 0; j < n; ++j) {
