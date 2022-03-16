@@ -89,8 +89,21 @@ Matrix &Matrix::operator=(const Matrix &other){
 Matrix & Matrix::operator=(const Matrix *other) {
 
     if(other != this){
-        recreateMatrix(other->n, other->m, other->modulo);
+        // We use a temporary variable to not leave the object in a broken state
+        // in case the allocation throws an exception.
+        unsigned** tmpData = new unsigned* [other->n];
+        for (int i = 0; i < other->n; ++i) {
+            tmpData[i] = new unsigned [other->m];
+        }
 
+        deleteValues();
+
+        this->n = other->n;
+        this->m = other->m;
+        this->modulo = other->modulo;
+
+
+        this->data = tmpData;
         for (int i = 0; i < this->n; ++i) {
             for (int j = 0; j < this->m; ++j) {
                 this->data[i][j] = other->data[i][j];
@@ -99,25 +112,6 @@ Matrix & Matrix::operator=(const Matrix *other) {
     }
 
     return *this;
-}
-
-void Matrix::recreateMatrix(unsigned int n, unsigned int m,
-                            unsigned int modulo) {
-    // We use a temporary variable to not leave the object in a broken state
-    // in case the allocation throws an exception.
-    unsigned** tmpData = new unsigned* [n];
-    for (int i = 0; i < n; ++i) {
-        tmpData[i] = new unsigned [m];
-    }
-
-    deleteValues();
-
-    this->n = n;
-    this->m = m;
-    this->modulo = modulo;
-
-
-    this->data = tmpData;
 }
 
 
@@ -129,13 +123,25 @@ Matrix& Matrix::operation(const Matrix &other, const Operation &op) {
     if(other.modulo != this->modulo)
         throw std::invalid_argument("Error : Not the same modulus");
 
-    recreateMatrix(std::max(this->n, other.n), std::max(this->m, other.m), this->modulo);
+    unsigned newN = std::max(this->n, other.n);
+    unsigned newM = std::max(this->m, other.m);
 
-    for (unsigned i = 0; i < m; ++i) {
-        for (unsigned j = 0; j < n; ++j) {
-            this->setValue(i, j, op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j))); //TODO unsigned partout
+    unsigned** tmpData = new unsigned* [newN];
+    for (int i = 0; i < newN; ++i) {
+        tmpData[i] = new unsigned [newM];
+    }
+
+    for (unsigned i = 0; i < newM; ++i) {
+        for (unsigned j = 0; j < newN; ++j) {
+            tmpData[i][j] = op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j)) % modulo; //TODO unsigned partout
         }
     }
+
+    this->n = newN;
+    this->m = newM;
+
+    deleteValues();
+    this->data = tmpData;
     return *this;
 }
 

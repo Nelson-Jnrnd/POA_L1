@@ -59,15 +59,6 @@ class Matrix {
      */
     void deleteValues();
 
-    /**
-     * It creates a new matrix with the given dimensions and modulo value
-     *
-     * @param n The number of rows in the matrix.
-     * @param m The number of columns in the matrix.
-     * @param modulo The modulo to use for the matrix.
-     */
-    void recreateMatrix(unsigned int n, unsigned int m, unsigned int modulo);
-
 public:
 
     friend std::ostream& operator<<(std::ostream& os, const Matrix& dt);
