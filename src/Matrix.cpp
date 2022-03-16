@@ -109,11 +109,14 @@ void Matrix::recreateMatrix(unsigned int n, unsigned int m,
     for (int i = 0; i < n; ++i) {
         tmpData[i] = new unsigned [m];
     }
+
+    deleteValues();
+
     this->n = n;
     this->m = m;
     this->modulo = modulo;
 
-    deleteValues();
+
     this->data = tmpData;
 }
 
