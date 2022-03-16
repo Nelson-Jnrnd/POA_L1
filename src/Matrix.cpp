@@ -10,7 +10,8 @@ static const Add ADD = Add();
 static const Sub SUB = Sub();
 static const Multiply MUL = Multiply();
 
-// TODO vérif parce que c'est un peu dodgy ce truc
+
+
 Matrix::Matrix() {
     this->n = 0;
     this->m = 0;
@@ -20,15 +21,13 @@ Matrix::Matrix() {
 
 
 Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
-    // TODO check les paramètres !
-
     if(n < MIN_N)
         throw std::runtime_error("number of rows is too low");
     if(n < MIN_M)
         throw std::runtime_error("number of columns is too low");
     if(n < MIN_MODULO)
         throw std::runtime_error("modulus is too low");
-
+    
     Random* rand = Random::getInstance();
     this->n = n;
     this->m = m;
@@ -57,7 +56,6 @@ Matrix::Matrix(const Matrix &other) : Matrix(other.n, other.m, other.modulo, fal
         }
     }
 }
-
 
 /**
  * Deletes the dynamically allocated memory for the data member
@@ -97,8 +95,20 @@ Matrix &Matrix::operator=(const Matrix &other){
 Matrix & Matrix::operator=(const Matrix *other) {
 
     if(other != this){
-        recreateMatrix(other->n, other->m, other->modulo);
+        // We use a temporary variable to not leave the object in a broken state
+        // in case the allocation throws an exception.
+        unsigned** tmpData = new unsigned* [other->n];
+        for (int i = 0; i < other->n; ++i) {
+            tmpData[i] = new unsigned [other->m];
+        }
 
+        deleteValues();
+
+        this->n = other->n;
+        this->m = other->m;
+        this->modulo = other->modulo;
+
+        this->data = tmpData;
         for (int i = 0; i < this->n; ++i) {
             for (int j = 0; j < this->m; ++j) {
                 this->data[i][j] = other->data[i][j];
@@ -109,23 +119,6 @@ Matrix & Matrix::operator=(const Matrix *other) {
     return *this;
 }
 
-void Matrix::recreateMatrix(unsigned int n, unsigned int m,
-                            unsigned int modulo) {
-    // We use a temporary variable to not leave the object in a broken state
-    // in case the allocation throws an exception.
-    unsigned** tmpData = new unsigned* [n];
-    for (int i = 0; i < n; ++i) {
-        tmpData[i] = new unsigned [m];
-    }
-    this->n = n;
-    this->m = m;
-    this->modulo = modulo;
-
-    deleteValues();
-    this->data = tmpData;
-}
-
-
 unsigned int Matrix::getValueOrZero(unsigned i, unsigned j) const {
     return i < this->n && j < this->m ? this->data[i][j] : 0;
 }
@@ -133,17 +126,28 @@ unsigned int Matrix::getValueOrZero(unsigned i, unsigned j) const {
 Matrix& Matrix::operation(const Matrix &other, const Operation &op) {
     if(other.modulo != this->modulo)
         throw std::invalid_argument("Error : Not the same modulus");
+    
+    unsigned newN = std::max(this->n, other.n);
+    unsigned newM = std::max(this->m, other.m);
 
-    recreateMatrix(std::max(this->n, other.n), std::max(this->m, other.m), this->modulo);
+    unsigned** tmpData = new unsigned* [newN];
+    for (int i = 0; i < newN; ++i) {
+        tmpData[i] = new unsigned [newM];
+    }
 
-    for (unsigned i = 0; i < m; ++i) {
-        for (unsigned j = 0; j < n; ++j) {
-            this->setValue(i, j, op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j))); //TODO unsigned partout
+    for (unsigned i = 0; i < newM; ++i) {
+        for (unsigned j = 0; j < newN; ++j) {
+            tmpData[i][j] = op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j)) % modulo; //TODO unsigned partout
         }
     }
+
+    this->n = newN;
+    this->m = newM;
+
+    deleteValues();
+    this->data = tmpData;
     return *this;
 }
-
 
 Matrix *Matrix::operationByPtr(const Matrix &other, const Operation &op) const {
     if(other.modulo != this->modulo)
@@ -153,7 +157,6 @@ Matrix *Matrix::operationByPtr(const Matrix &other, const Operation &op) const {
 
     for (unsigned i = 0; i < n; ++i) {
         for (unsigned j = 0; j < m; ++j) {
-
             res->setValue(i, j, op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j)));
         }
     }
@@ -162,7 +165,18 @@ Matrix *Matrix::operationByPtr(const Matrix &other, const Operation &op) const {
 }
 
 Matrix Matrix::operationByValue(const Matrix &other, const Operation &op) const {
-    return *operationByPtr(other, op);
+    if(other.modulo != this->modulo)
+        throw std::invalid_argument("Error : Not the same modulus");
+
+    Matrix res = Matrix(std::max(this->n, other.n), std::max(this->m, other.m), this->modulo, false);
+
+    for (unsigned i = 0; i < n; ++i) {
+        for (unsigned j = 0; j < m; ++j) {
+            res.setValue(i, j, op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j)));
+        }
+    }
+
+    return res;
 }
 
 void Matrix::setValue(unsigned int i, unsigned int j, unsigned int value) {
