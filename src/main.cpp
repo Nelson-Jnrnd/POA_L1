@@ -39,11 +39,9 @@ int main() {
     cout << "by pointer : " << endl;
     c = m1->addByPtr(*m2);
     cout << "c : " << endl << c << endl;
-
-
+    
     delete m1;
     delete m2;
     delete m3;
     delete m4;
-
 }

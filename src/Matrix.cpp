@@ -55,12 +55,15 @@ Matrix::Matrix(const Matrix &other) : Matrix(other.n, other.m, other.modulo, fal
  * Deletes the dynamically allocated memory for the data member
  */
 Matrix::~Matrix() {
+    deleteValues();
+}
+
+void Matrix::deleteValues(){
     for (int i = 0; i < m; ++i) {
-        delete this->data[i];
+        delete[] this->data[i];
     }
     delete[] this->data;
 }
-
 
 std::ostream &operator<<(std::ostream &os, const Matrix &dt) {
     for (int i = 0; i < dt.m; ++i) {
@@ -86,18 +89,7 @@ Matrix &Matrix::operator=(const Matrix &other){
 Matrix & Matrix::operator=(const Matrix *other) {
 
     if(other != this){
-        // We use a temporary variable to not leave the object in a broken state
-        // in case the allocation throws an exception.
-        unsigned** tmpData = new unsigned* [other->n];
-        for (int i = 0; i < other->n; ++i) {
-            tmpData[i] = new unsigned [other->m];
-        }
-        this->n = other->n;
-        this->m = other->m;
-        this->modulo = other->modulo;
-
-        delete this->data;
-        this->data = tmpData;
+        recreateMatrix(other->n, other->m, other->modulo);
 
         for (int i = 0; i < this->n; ++i) {
             for (int j = 0; j < this->m; ++j) {
@@ -109,12 +101,43 @@ Matrix & Matrix::operator=(const Matrix *other) {
     return *this;
 }
 
+void Matrix::recreateMatrix(unsigned int n, unsigned int m,
+                            unsigned int modulo) {
+    // We use a temporary variable to not leave the object in a broken state
+    // in case the allocation throws an exception.
+    unsigned** tmpData = new unsigned* [n];
+    for (int i = 0; i < n; ++i) {
+        tmpData[i] = new unsigned [m];
+    }
+    this->n = n;
+    this->m = m;
+    this->modulo = modulo;
+
+    deleteValues();
+    this->data = tmpData;
+}
+
 
 unsigned int Matrix::getValueOrZero(unsigned i, unsigned j) const {
     return i < this->n && j < this->m ? this->data[i][j] : 0;
 }
 
-Matrix Matrix::operation(const Matrix &other, const Operation &op) const{
+Matrix& Matrix::operation(const Matrix &other, const Operation &op) {
+    if(other.modulo != this->modulo)
+        throw std::invalid_argument("Error : Not the same modulus");
+
+    recreateMatrix(std::max(this->n, other.n), std::max(this->m, other.m), this->modulo);
+
+    for (unsigned i = 0; i < m; ++i) {
+        for (unsigned j = 0; j < n; ++j) {
+            this->setValue(i, j, op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j))); //TODO unsigned partout
+        }
+    }
+    return *this;
+}
+
+
+Matrix *Matrix::operationByPtr(const Matrix &other, const Operation &op) const {
     if(other.modulo != this->modulo)
         throw std::invalid_argument("Error : Not the same modulus");
 
@@ -127,7 +150,11 @@ Matrix Matrix::operation(const Matrix &other, const Operation &op) const{
         }
     }
 
-    return *res;
+    return res;
+}
+
+Matrix Matrix::operationByValue(const Matrix &other, const Operation &op) const {
+    return *operationByPtr(other, op);
 }
 
 void Matrix::setValue(unsigned int i, unsigned int j, unsigned int value) {
@@ -137,55 +164,38 @@ void Matrix::setValue(unsigned int i, unsigned int j, unsigned int value) {
     data[i][j] = value % modulo;
 }
 
-Matrix Matrix::add(const Matrix &other) {
-    *this = this->operation(other, ADD);
-    return *this;
+Matrix& Matrix::add(const Matrix &other) {
+    return this->operation(other, ADD);
 }
 
 Matrix Matrix::addByValue(const Matrix &other) const {
-    Matrix res;
-    res = this->operation(other, ADD);
-    return res;
+    return this->operationByValue(other, ADD);
 }
 
 Matrix *Matrix::addByPtr(const Matrix &other) const {
-    Matrix* res = new Matrix();
-    *res =  this->operation(other,ADD);
-    return res;
+    return this->operationByPtr(other, ADD);
 }
 
-Matrix Matrix::sub(const Matrix &other) {
-    *this = this->operation(other, SUB);
-    return *this;
+Matrix& Matrix::sub(const Matrix &other) {
+    return this->operation(other, SUB);
 }
 
 Matrix Matrix::subByValue(const Matrix &other) const {
-    Matrix res;
-    res = this->operation(other, SUB);
-    return res;
+    return this->operationByValue(other, SUB);
 }
 
 Matrix *Matrix::subByPtr(const Matrix &other) const {
-    Matrix* res = new Matrix();
-    *res =  this->operation(other,SUB);
-    return res;
+    return this->operationByPtr(other, SUB);
 }
 
-Matrix Matrix::mult(const Matrix &other) {
-    *this = this->operation(other, SUB);
-    return *this;
+Matrix& Matrix::mult(const Matrix &other) {
+    return this->operation(other, SUB);
 }
 
 Matrix Matrix::multByValue(const Matrix &other) const {
-    Matrix res;
-    res = this->operation(other, MUL);
-    return res;
+    return this->operationByValue(other, MUL);
 }
 
 Matrix *Matrix::multByPtr(const Matrix &other) const {
-    Matrix* res = new Matrix();
-    *res =  this->operation(other,MUL);
-    return res;
+    return this->operationByPtr(other, MUL);
 }
-
-

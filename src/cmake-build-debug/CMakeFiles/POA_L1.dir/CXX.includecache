@@ -36,12 +36,6 @@ D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
 
 D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
 
-D:/prog/heigVD_2021/POA/POA_L1/src/Random.cpp
-Random.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Random.h
-ctime
--
-
 D:/prog/heigVD_2021/POA/POA_L1/src/Random.h
 cstdlib
 -
@@ -49,4 +43,10 @@ cstdlib
 D:/prog/heigVD_2021/POA/POA_L1/src/Sub.h
 Operation.h
 D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
+
+D:/prog/heigVD_2021/POA/POA_L1/src/main.cpp
+iostream
+-
+Matrix.h
+D:/prog/heigVD_2021/POA/POA_L1/src/Matrix.h
 

@@ -33,6 +33,8 @@ class Matrix {
      */
     unsigned int** data;
 
+    Matrix();
+
     /**
      * Create a matrix with n rows and m columns
      * 
@@ -52,6 +54,20 @@ class Matrix {
      */
     unsigned int getValueOrZero(unsigned i, unsigned j) const;
 
+    /**
+     * Destroy the value array in memory
+     */
+    void deleteValues();
+
+    /**
+     * It creates a new matrix with the given dimensions and modulo value
+     *
+     * @param n The number of rows in the matrix.
+     * @param m The number of columns in the matrix.
+     * @param modulo The modulo to use for the matrix.
+     */
+    void recreateMatrix(unsigned int n, unsigned int m, unsigned int modulo);
+
 public:
 
     friend std::ostream& operator<<(std::ostream& os, const Matrix& dt);
@@ -59,8 +75,6 @@ public:
 
     Matrix& operator= (const Matrix& other);
     Matrix& operator= (const Matrix *other);
-
-    Matrix();
 
     /**
       * Create a matrix with n rows and m columns
@@ -86,7 +100,7 @@ public:
      * @param other The matrix to add to this one.
      * @return a reference to this object
      */
-    Matrix add(const Matrix& other);
+    Matrix& add(const Matrix& other);
     /**
      * Add two matrices together by value
      *
@@ -109,7 +123,7 @@ public:
      * @param other The matrix to subtract from this matrix.
      * @return a reference to this object.
      */
-    Matrix sub(const Matrix& other);
+    Matrix& sub(const Matrix& other);
     /**
      * Subtracts the values of the other matrix from the values of this matrix
      *
@@ -132,7 +146,7 @@ public:
      * @param other The matrix to subtract from this matrix.
      * @return a reference to this object.
      */
-    Matrix mult(const Matrix& other);
+    Matrix& mult(const Matrix& other);
     /**
       * Multiply the matrix by a another matrix
       *
@@ -149,13 +163,31 @@ public:
     Matrix* multByPtr(const Matrix& other) const;
 
     /**
-     * Given two matrices, this function returns the result of the operation between the two matrices
+     * Given a matrices, this function returns the result of the operation between the matrix and this
+     *
+     * @param other the matrix to be added
+     * @param op the operation to perform
+     * @return A reference to this object
+     */
+    Matrix& operation(const Matrix& other, const Operation& op);
+
+    /**
+     * Given a matrices, this function returns the result of the operation between the matrix and this
+     *
+     * @param other the matrix to be added
+     * @param op the operation to perform
+     * @return A pointer to a new Matrix object.
+     */
+    Matrix* operationByPtr(const Matrix& other, const Operation& op) const;
+
+    /**
+     * Given a matrices, this function returns the result of the operation between the matrix and this
      *
      * @param other the matrix to be added
      * @param op the operation to perform
      * @return A new Matrix object.
      */
-    Matrix operation(const Matrix& other, const Operation& op) const;
+    Matrix operationByValue(const Matrix& other, const Operation& op) const;
     /**
      * Set the value of the element at row i and column j to value
      *
@@ -164,6 +196,7 @@ public:
      * @param value the value to be set
      */
     void setValue(unsigned i, unsigned j, unsigned value);
+
 };
 
 

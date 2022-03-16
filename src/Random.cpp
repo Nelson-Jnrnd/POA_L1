@@ -15,6 +15,6 @@ Random* Random::getInstance() {
     return instance;
 }
 
-unsigned Random::getRandom(unsigned n){
+unsigned Random::getRandom(unsigned n) {
     return (unsigned) (1 + rand() / (RAND_MAX + 1.0) * n);
 }
