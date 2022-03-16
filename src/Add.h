@@ -11,6 +11,14 @@
 class Add : public Operation{
 public:
 
+
+   /**
+    * Add two numbers together
+    * 
+    * @param a The first number to add.
+    * @param b The second operand.
+    * @return The result of the addition.
+    */
    int calculate(unsigned a, unsigned b) const override;
 };
 

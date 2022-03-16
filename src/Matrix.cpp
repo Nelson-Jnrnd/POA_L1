@@ -10,51 +10,50 @@ const static Add ADD = Add();
 const static Sub SUB = Sub();
 const static Multiply MUL = Multiply();
 
-// Constructors...
-
 Matrix::Matrix() { // TODO pk y a ça ?
-   this->n = 0;
-   this->m = 0;
-   this->modulo = 0;
-   this->data = nullptr;
+    this->n = 0;
+    this->m = 0;
+    this->modulo = 0;
+    this->data = nullptr;
 }
 
 
 Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
+    // TODO check les paramètres !
 
-   Random* rand = Random::getInstance();
-   this->n = n;
-   this->m = m;
-   this->modulo = modulo;
-   this->data = new unsigned* [m];
+    Random* rand = Random::getInstance();
+    this->n = n;
+    this->m = m;
+    this->modulo = modulo;
+    this->data = new unsigned* [m];
 
-   for (int i = 0; i < m; ++i) {
-      this->data[i] = new unsigned [n];
-   }
-   if(initRandom) {
-      for (int i = 0; i < this->n; ++i) {
-         for (int j = 0; j < this->m; ++j) {
-            this->data[i][j] = rand->getRandom(this->modulo) % this->modulo ;
-         }
-      }
-   }
+    for (int i = 0; i < m; ++i) {
+        this->data[i] = new unsigned [n];
+    }
+    if(initRandom) {
+        for (int i = 0; i < this->n; ++i) {
+            for (int j = 0; j < this->m; ++j) {
+                this->data[i][j] = rand->getRandom(this->modulo) % this->modulo ;
+            }
+        }
+    }
 }
-// TODO check les paramètres !
+
 Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo) : Matrix(n, m, modulo, true) {}
 
 Matrix::Matrix(const Matrix &other) : Matrix(other.n, other.m, other.modulo, false){
     std::cout << "copy Matrix" << std::endl << other;
-    // TODO factoriser les constructeurs
     for (unsigned i = 0; i < this->m; ++i) {
         for (unsigned j = 0; j < this->n; ++j) {
             this->data[i][j] = other.data[i][j];
         }
     }
-    //std::copy(&other.data[0][0], &other.data[0][0] + other.n * other.m, &this->data[0][0]); TODO ça pourrait être mieux mais ça bug jsp pk
 }
 
-// Destructor...
 
+/**
+ * Deletes the dynamically allocated memory for the data member
+ */
 Matrix::~Matrix() {
     for (int i = 0; i < m; ++i) {
         delete this->data[i];
@@ -62,7 +61,6 @@ Matrix::~Matrix() {
     delete[] this->data;
 }
 
-// Operators...
 
 std::ostream &operator<<(std::ostream &os, const Matrix &dt) {
     for (int i = 0; i < dt.m; ++i) {
@@ -113,7 +111,7 @@ Matrix & Matrix::operator=(const Matrix *other) {
 
 
 unsigned int Matrix::getValueOrZero(unsigned i, unsigned j) const {
-   return i < this->n && j < this->m ? this->data[i][j] : 0;
+    return i < this->n && j < this->m ? this->data[i][j] : 0;
 }
 
 Matrix Matrix::operation(const Matrix &other, const Operation &op) const{
@@ -140,54 +138,54 @@ void Matrix::setValue(unsigned int i, unsigned int j, unsigned int value) {
 }
 
 Matrix Matrix::add(const Matrix &other) {
-   *this = this->operation(other, ADD);
-   return *this;
+    *this = this->operation(other, ADD);
+    return *this;
 }
 
 Matrix Matrix::addByValue(const Matrix &other) const {
-   Matrix res;
-   res = this->operation(other, ADD);
-   return res;
+    Matrix res;
+    res = this->operation(other, ADD);
+    return res;
 }
 
 Matrix *Matrix::addByPtr(const Matrix &other) const {
-   Matrix* res = new Matrix();
-   *res =  this->operation(other,ADD);
-   return res;
+    Matrix* res = new Matrix();
+    *res =  this->operation(other,ADD);
+    return res;
 }
 
 Matrix Matrix::sub(const Matrix &other) {
-   *this = this->operation(other, SUB);
-   return *this;
+    *this = this->operation(other, SUB);
+    return *this;
 }
 
 Matrix Matrix::subByValue(const Matrix &other) const {
-   Matrix res;
-   res = this->operation(other, SUB);
-   return res;
+    Matrix res;
+    res = this->operation(other, SUB);
+    return res;
 }
 
 Matrix *Matrix::subByPtr(const Matrix &other) const {
-   Matrix* res = new Matrix();
-   *res =  this->operation(other,SUB);
-   return res;
+    Matrix* res = new Matrix();
+    *res =  this->operation(other,SUB);
+    return res;
 }
 
 Matrix Matrix::mult(const Matrix &other) {
-   *this = this->operation(other, SUB);
-   return *this;
+    *this = this->operation(other, SUB);
+    return *this;
 }
 
 Matrix Matrix::multByValue(const Matrix &other) const {
-   Matrix res;
-   res = this->operation(other, MUL);
-   return res;
+    Matrix res;
+    res = this->operation(other, MUL);
+    return res;
 }
 
 Matrix *Matrix::multByPtr(const Matrix &other) const {
-   Matrix* res = new Matrix();
-   *res =  this->operation(other,MUL);
-   return res;
+    Matrix* res = new Matrix();
+    *res =  this->operation(other,MUL);
+    return res;
 }
 
 

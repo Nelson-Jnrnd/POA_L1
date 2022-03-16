@@ -1,9 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/POA_L1.dir/Add.cpp.obj"
+  "CMakeFiles/POA_L1.dir/Matrix.cpp.obj"
   "CMakeFiles/POA_L1.dir/Multiply.cpp.obj"
+  "CMakeFiles/POA_L1.dir/Random.cpp.obj"
   "CMakeFiles/POA_L1.dir/Sub.cpp.obj"
   "CMakeFiles/POA_L1.dir/main.cpp.obj"
-  "CMakeFiles/POA_L1.dir/matrix.cpp.obj"
   "POA_L1.exe"
   "POA_L1.exe.manifest"
   "POA_L1.pdb"

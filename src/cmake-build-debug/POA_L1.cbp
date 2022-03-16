@@ -86,6 +86,12 @@
 		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Add.h">
 			<Option target="POA_L1"/>
 		</Unit>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Matrix.cpp">
+			<Option target="POA_L1"/>
+		</Unit>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Matrix.h">
+			<Option target="POA_L1"/>
+		</Unit>
 		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Multiply.cpp">
 			<Option target="POA_L1"/>
 		</Unit>
@@ -95,6 +101,12 @@
 		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h">
 			<Option target="POA_L1"/>
 		</Unit>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Random.cpp">
+			<Option target="POA_L1"/>
+		</Unit>
+		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Random.h">
+			<Option target="POA_L1"/>
+		</Unit>
 		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/Sub.cpp">
 			<Option target="POA_L1"/>
 		</Unit>
@@ -102,12 +114,6 @@
 			<Option target="POA_L1"/>
 		</Unit>
 		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/main.cpp">
-			<Option target="POA_L1"/>
-		</Unit>
-		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/matrix.cpp">
-			<Option target="POA_L1"/>
-		</Unit>
-		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/matrix.h">
 			<Option target="POA_L1"/>
 		</Unit>
 		<Unit filename="D:/prog/heigVD_2021/POA/POA_L1/src/CMakeLists.txt">
