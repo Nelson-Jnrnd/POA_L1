@@ -13,6 +13,10 @@
  */
 class Matrix {
 
+    static const int MIN_N = 1;
+    static const int MIN_M = 1;
+    static const int MIN_MODULO = 1;
+
     /**
      * the number of rows in the matrix
      */
