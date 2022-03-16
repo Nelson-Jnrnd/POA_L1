@@ -31,6 +31,7 @@ int main() {
 
     cout << "ADD with same modulus and size : " << endl;
     cout << "Inline : " << endl;
+
     m1->add(*m2);
     cout << "m1 : " << endl << m1 << endl;
     m1 = &c;
