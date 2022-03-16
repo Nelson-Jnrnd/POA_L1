@@ -12,7 +12,7 @@ int main() {
     Matrix* p = new Matrix(5, 5, 10);
 
     cout << "test operator : " << endl << m;
-
+   m->add(*p);
     Matrix c(*m);
 
     cout << "test constructor copy : " << endl << c;
