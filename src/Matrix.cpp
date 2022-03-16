@@ -6,11 +6,12 @@
 #include "Random.h"
 
 
-const static Add ADD = Add();
-const static Sub SUB = Sub();
-const static Multiply MUL = Multiply();
+static const Add ADD = Add();
+static const Sub SUB = Sub();
+static const Multiply MUL = Multiply();
 
-Matrix::Matrix() { // TODO pk y a ça ?
+// TODO vérif parce que c'est un peu dodgy ce truc
+Matrix::Matrix() {
     this->n = 0;
     this->m = 0;
     this->modulo = 0;
@@ -20,6 +21,13 @@ Matrix::Matrix() { // TODO pk y a ça ?
 
 Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
     // TODO check les paramètres !
+
+    if(n < MIN_N)
+        throw std::runtime_error("number of rows is too low");
+    if(n < MIN_M)
+        throw std::runtime_error("number of columns is too low");
+    if(n < MIN_MODULO)
+        throw std::runtime_error("modulus is too low");
 
     Random* rand = Random::getInstance();
     this->n = n;
