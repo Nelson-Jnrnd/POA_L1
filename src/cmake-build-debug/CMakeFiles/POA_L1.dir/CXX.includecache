@@ -6,46 +6,18 @@
 
 #IncludeRegexTransform: 
 
-D:/prog/heigVD_2021/POA/POA_L1/src/Add.h
-Operation.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
-
-D:/prog/heigVD_2021/POA/POA_L1/src/Matrix.cpp
-Matrix.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Matrix.h
-iostream
-D:/prog/heigVD_2021/POA/POA_L1/src/iostream
-Add.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Add.h
-Sub.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Sub.h
-Multiply.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Multiply.h
-Random.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Random.h
-
 D:/prog/heigVD_2021/POA/POA_L1/src/Matrix.h
 iostream
 D:/prog/heigVD_2021/POA/POA_L1/src/iostream
 Operation.h
 D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
 
-D:/prog/heigVD_2021/POA/POA_L1/src/Multiply.h
-Operation.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
-
-D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
-
-D:/prog/heigVD_2021/POA/POA_L1/src/Random.h
-cstdlib
--
-
-D:/prog/heigVD_2021/POA/POA_L1/src/Sub.h
-Operation.h
 D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
 
 D:/prog/heigVD_2021/POA/POA_L1/src/main.cpp
 iostream
+-
+sstream
 -
 Matrix.h
 D:/prog/heigVD_2021/POA/POA_L1/src/Matrix.h
