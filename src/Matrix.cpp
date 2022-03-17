@@ -27,7 +27,7 @@ Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRan
         throw std::runtime_error("number of columns is too low");
     if(n < MIN_MODULO)
         throw std::runtime_error("modulus is too low");
-    
+
     Random* rand = Random::getInstance();
     this->n = n;
     this->m = m;
