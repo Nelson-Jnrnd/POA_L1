@@ -19,7 +19,6 @@ Matrix::Matrix() {
 
 
 Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
-
     if(n < MIN_N)
         throw std::runtime_error("number of rows is out of bounds");
     if(m < MIN_M)
