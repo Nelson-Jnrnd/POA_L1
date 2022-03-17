@@ -21,11 +21,11 @@ Matrix::Matrix() {
 Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
 
     if(n < MIN_N)
-        throw std::runtime_error("number of rows is too low");
-    if(n < MIN_M)
-        throw std::runtime_error("number of columns is too low");
-    if(n < MIN_MODULO)
-        throw std::runtime_error("modulus is too low");
+        throw std::runtime_error("number of rows is out of bounds");
+    if(m < MIN_M)
+        throw std::runtime_error("number of columns is out of bounds");
+    if(modulo < MIN_MODULO)
+        throw std::runtime_error("modulus is out of bounds");
 
     Random* rand = Random::getInstance();
     this->n = n;
