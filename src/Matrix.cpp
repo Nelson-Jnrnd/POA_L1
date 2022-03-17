@@ -11,13 +11,6 @@ static const Add ADD = Add();
 static const Sub SUB = Sub();
 static const Multiply MUL = Multiply();
 
-Matrix::Matrix() {
-    this->n = 0;
-    this->m = 0;
-    this->modulo = 0;
-    this->data = nullptr;
-}
-
 
 Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRandom) {
     if(n < MIN_N)
