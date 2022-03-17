@@ -4,6 +4,7 @@
 #include "Sub.h"
 #include "Multiply.h"
 #include "Random.h"
+#include <cmath>
 
 
 static const Add ADD = Add();
@@ -38,7 +39,7 @@ Matrix::Matrix(unsigned int n, unsigned int m, unsigned int modulo, bool initRan
     if(initRandom) {
         for (int i = 0; i < this->n; ++i) {
             for (int j = 0; j < this->m; ++j) {
-                this->data[i][j] = rand->getRandom(this->modulo) % this->modulo ;
+                this->data[i][j] = mod(rand->getRandom(this->modulo), this->modulo);
             }
         }
     }
@@ -135,7 +136,7 @@ Matrix& Matrix::operation(const Matrix &other, const Operation &op) {
 
     for (unsigned i = 0; i < newM; ++i) {
         for (unsigned j = 0; j < newN; ++j) {
-            tmpData[i][j] = op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j)) % modulo; //TODO unsigned partout
+            tmpData[i][j] = mod(op.calculate(this->getValueOrZero(i,j), other.getValueOrZero(i,j)),modulo);
         }
     }
 
@@ -181,7 +182,7 @@ void Matrix::setValue(unsigned int i, unsigned int j, unsigned int value) {
     if(i >= n || j >= m)
         throw std::runtime_error("Error out of bounds");
 
-    data[i][j] = value % modulo;
+    data[i][j] = mod(value, modulo);
 }
 
 Matrix& Matrix::add(const Matrix &other) {
@@ -218,4 +219,8 @@ Matrix Matrix::multByValue(const Matrix &other) const {
 
 Matrix *Matrix::multByPtr(const Matrix &other) const {
     return this->operationByPtr(other, MUL);
+}
+
+unsigned int Matrix::mod(int a, int b){
+   return (unsigned int) std::abs(a - ((floor((a / b))) * b));
 }
