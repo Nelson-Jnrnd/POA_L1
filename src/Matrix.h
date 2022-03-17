@@ -48,8 +48,6 @@ class Matrix {
    */
    unsigned int** data;
 
-   Matrix();
-
    /**
    * Create a matrix with n rows and m columns
    *
