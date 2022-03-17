@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-D:/prog/heigVD_2021/POA/POA_L1/src/Add.cpp
-Add.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Add.h
-
 D:/prog/heigVD_2021/POA/POA_L1/src/Add.h
 Operation.h
 D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
@@ -34,10 +30,6 @@ D:/prog/heigVD_2021/POA/POA_L1/src/iostream
 Operation.h
 D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
 
-D:/prog/heigVD_2021/POA/POA_L1/src/Multiply.cpp
-Multiply.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Multiply.h
-
 D:/prog/heigVD_2021/POA/POA_L1/src/Multiply.h
 Operation.h
 D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
@@ -54,16 +46,16 @@ D:/prog/heigVD_2021/POA/POA_L1/src/Random.h
 cstdlib
 -
 
-D:/prog/heigVD_2021/POA/POA_L1/src/Sub.cpp
-Sub.h
-D:/prog/heigVD_2021/POA/POA_L1/src/Sub.h
-
 D:/prog/heigVD_2021/POA/POA_L1/src/Sub.h
 Operation.h
+=======
+>>>>>>> test
 D:/prog/heigVD_2021/POA/POA_L1/src/Operation.h
 
 D:/prog/heigVD_2021/POA/POA_L1/src/main.cpp
 iostream
+-
+sstream
 -
 Matrix.h
 D:/prog/heigVD_2021/POA/POA_L1/src/Matrix.h
