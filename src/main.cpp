@@ -4,6 +4,15 @@
 using std::cout;
 using std::endl;
 
+/**
+ * Test the matrix class
+ * 
+ * @param n1 number of rows of the first matrix
+ * @param m1 the number of columns of the first matrix
+ * @param n2 number of rows of the second matrix
+ * @param m2 the number of columns of the second matrix
+ * @param n the modulo of the matrix
+ */
 void testMatrix(unsigned n1, unsigned m1, unsigned n2, unsigned m2, unsigned n){
     cout << "Test initialisation" << endl;
 
