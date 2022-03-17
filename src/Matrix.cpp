@@ -6,7 +6,6 @@
 #include "Random.h"
 #include <cmath>
 
-
 static const Add ADD = Add();
 static const Sub SUB = Sub();
 static const Multiply MUL = Multiply();
